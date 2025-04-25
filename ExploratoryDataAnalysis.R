@@ -57,3 +57,14 @@ IQR(StudentData$AttendanceRate)
 IQR(StudentData$StudyHoursPerWeek)
 IQR(StudentData$FinalGrade)
 
+# Correlation matrix for numeric predictors and FinalGrade
+numeric_vars <- StudentData[, sapply(StudentData, is.numeric)]
+cor(numeric_vars)
+
+# Visual correlation plot (optional)
+# install.packages("corrplot") if needed
+library(corrplot)
+corrplot(cor(numeric_vars), method = "number")
+
+
+
