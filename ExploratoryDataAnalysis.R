@@ -41,3 +41,19 @@ get_mode <- function(v) {
 get_mode(StudentData$ParentalSupport)
 get_mode(StudentData$Gender)
 
+# Measures of Distribution
+# Standard Deviation
+sd(StudentData$AttendanceRate)
+sd(StudentData$StudyHoursPerWeek)
+sd(StudentData$FinalGrade)
+
+# Range
+range(StudentData$AttendanceRate)
+range(StudentData$StudyHoursPerWeek)
+range(StudentData$FinalGrade)
+
+# IQR (Interquartile Range)
+IQR(StudentData$AttendanceRate)
+IQR(StudentData$StudyHoursPerWeek)
+IQR(StudentData$FinalGrade)
+
