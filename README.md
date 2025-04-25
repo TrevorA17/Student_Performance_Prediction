@@ -1,2 +1,2 @@
-# Student_Performance_Prediction
+# Student Performance Prediction
 Elevate Education: Analyze Student Success with Comprehensive Performance Data
