@@ -82,4 +82,58 @@ summary(tukey_result)
 tukey_gender <- TukeyHSD(anova_gender)
 summary(tukey_gender)
 
+# Load ggplot2 for plotting
+library(ggplot2)
+
+# Histogram for FinalGrade (continuous variable)
+ggplot(StudentData, aes(x = FinalGrade)) +
+  geom_histogram(binwidth = 5, fill = "skyblue", color = "black") +
+  labs(title = "Histogram of FinalGrade", x = "FinalGrade", y = "Frequency")
+
+# Boxplot for StudyHoursPerWeek (continuous variable)
+ggplot(StudentData, aes(x = "", y = StudyHoursPerWeek)) +
+  geom_boxplot(fill = "orange", color = "black") +
+  labs(title = "Boxplot of StudyHoursPerWeek", y = "Study Hours Per Week")
+
+# Bar plot for Gender (categorical variable)
+ggplot(StudentData, aes(x = Gender)) +
+  geom_bar(fill = "lightgreen", color = "black") +
+  labs(title = "Bar Plot of Gender", x = "Gender", y = "Count")
+
+# Bar plot for ParentalSupport (categorical variable)
+ggplot(StudentData, aes(x = ParentalSupport)) +
+  geom_bar(fill = "lightcoral", color = "black") +
+  labs(title = "Bar Plot of Parental Support", x = "Parental Support", y = "Count")
+
+# Scatter plot for StudyHoursPerWeek vs FinalGrade (continuous vs continuous)
+ggplot(StudentData, aes(x = StudyHoursPerWeek, y = FinalGrade)) +
+  geom_point(color = "blue") +
+  labs(title = "Scatter Plot of Study Hours vs Final Grade", x = "Study Hours Per Week", y = "Final Grade") +
+  geom_smooth(method = "lm", color = "red")  # Adds a linear regression line
+
+# Scatter plot faceted by Gender
+ggplot(StudentData, aes(x = StudyHoursPerWeek, y = FinalGrade)) +
+  geom_point(aes(color = Gender)) +
+  labs(title = "Study Hours vs Final Grade by Gender", x = "Study Hours Per Week", y = "Final Grade") +
+  facet_wrap(~ Gender)  # Facets the plot by Gender
+
+# Boxplot for FinalGrade by ParentalSupport
+ggplot(StudentData, aes(x = ParentalSupport, y = FinalGrade, fill = ParentalSupport)) +
+  geom_boxplot() +
+  labs(title = "Boxplot of FinalGrade by Parental Support", x = "Parental Support", y = "Final Grade") +
+  scale_fill_brewer(palette = "Set3")
+
+# Load the corrplot package
+library(corrplot)
+
+# Select continuous variables for correlation
+cont_vars <- StudentData[, c("AttendanceRate", "StudyHoursPerWeek", "PreviousGrade", "FinalGrade")]
+
+# Compute the correlation matrix
+cor_matrix <- cor(cont_vars)
+
+# Plot the correlation matrix
+corrplot(cor_matrix, method = "circle", type = "upper", tl.col = "black", tl.srt = 45)
+
+
 
