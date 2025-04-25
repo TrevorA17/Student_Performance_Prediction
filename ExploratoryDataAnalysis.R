@@ -66,5 +66,20 @@ cor(numeric_vars)
 library(corrplot)
 corrplot(cor(numeric_vars), method = "number")
 
+# ANOVA to check if FinalGrade differs by Gender
+anova_gender <- aov(FinalGrade ~ Gender, data = StudentData)
+summary(anova_gender)
+
+# ANOVA to check if FinalGrade differs by Parental Support
+anova_parental_support <- aov(FinalGrade ~ ParentalSupport, data = StudentData)
+summary(anova_parental_support)
+
+# Post-hoc Tukey's HSD for ParentalSupport
+tukey_result <- TukeyHSD(anova_parental_support)
+summary(tukey_result)
+
+# Post-hoc Tukey's HSD for Gender (optional, if needed)
+tukey_gender <- TukeyHSD(anova_gender)
+summary(tukey_gender)
 
 
